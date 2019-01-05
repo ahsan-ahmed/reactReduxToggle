@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Button from './Components/Button';
+import Text from './Components/Text';
+import { connect } from 'react-redux';
+import setName from './Actions/UserActions';
 
 class App extends Component {
   render() {
+    func=()=>console.log("helloworld");
+  //  console.log(this.props.user);
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Button changeText={() => this.props.setName("helloWorld")} />
+        <Text abc={this.UNSAFE_componentWillMount.func()}/>
+        {/* { <Text getText={this.props.user.name1} />} */}
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+//  console.log(state.user);
+  return({ user: state.user });
+    };
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({ setName: (name1) => { dispatch(setName(name1))} });
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
