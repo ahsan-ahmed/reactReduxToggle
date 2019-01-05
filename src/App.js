@@ -7,12 +7,11 @@ import setName from './Actions/UserActions';
 
 class App extends Component {
   render() {
-    func=()=>console.log("helloworld");
   //  console.log(this.props.user);
     return (
       <div className="App">
         <Button changeText={() => this.props.setName("helloWorld")} />
-        <Text abc={this.UNSAFE_componentWillMount.func()}/>
+        <Text />
         {/* { <Text getText={this.props.user.name1} />} */}
       </div>
     );
